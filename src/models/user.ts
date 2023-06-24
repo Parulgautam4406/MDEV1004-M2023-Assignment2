@@ -29,17 +29,16 @@ const UserSchema = new Schema<IUser>(
     }
 );
 
+type _User = IUser;
+
 UserSchema.plugin(passportLocalMongoose);
 
 const Model = mongoose.model<IUser>("User", UserSchema);
 
 declare global {
-    export type UserDocument = mongoose.Document & {
-        _id: String;
-        username: String;
-        emailAddress: String;
-        displayName: String;
-    };
+    namespace Express {
+        interface User extends _User {}
+    }
 }
 
 export default Model;
