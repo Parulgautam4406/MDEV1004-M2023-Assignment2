@@ -1,0 +1,36 @@
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T18:52:41.599Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T18:52:41.608Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T18:53:20.931Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:02:49.063Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:02:49.069Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:03:14.525Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:03:14.531Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:03:47.940Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:03:47.947Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:03:49.623Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:03:49.629Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:03:56.568Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:03:56.575Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:04:00.804Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:04:00.810Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:04:07.399Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:04:30.218Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:04:51.016Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:04:51.022Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:04:51.960Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:05:01.227Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:05:01.233Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:05:22.135Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:05:22.142Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:05:25.874Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:05:26.916Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:06:03.466Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:06:16.730Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:06:16.736Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:06:17.748Z"}
+{"level":"error","message":"Error connecting to MongoDB: database names cannot contain the character '/'","stack":"MongoAPIError: database names cannot contain the character '/'\n    at validateDatabaseName (/Users/chaitanyasanoriya/Documents/College/Others/Parul/MDEV1004-M2023-Assignment2/node_modules/mongodb/lib/db.js:376:19)\n    at new Db (/Users/chaitanyasanoriya/Documents/College/Others/Parul/MDEV1004-M2023-Assignment2/node_modules/mongodb/lib/db.js:88:9)\n    at MongoClient.db (/Users/chaitanyasanoriya/Documents/College/Others/Parul/MDEV1004-M2023-Assignment2/node_modules/mongodb/lib/mongo_client.js:252:20)\n    at _setClient (/Users/chaitanyasanoriya/Documents/College/Others/Parul/MDEV1004-M2023-Assignment2/node_modules/mongoose/lib/connection.js:910:58)\n    at _createMongoClient (/Users/chaitanyasanoriya/Documents/College/Others/Parul/MDEV1004-M2023-Assignment2/node_modules/mongoose/lib/connection.js:897:3)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async NativeConnection.openUri (/Users/chaitanyasanoriya/Documents/College/Others/Parul/MDEV1004-M2023-Assignment2/node_modules/mongoose/lib/connection.js:765:5)","timestamp":"2023-06-24T19:13:20.016Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:14:53.179Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:14:53.186Z"}
+{"level":"info","message":"Found movies","timestamp":"2023-06-24T19:14:55.492Z"}
+{"level":"info","message":"Connected to MongoDB","timestamp":"2023-06-24T19:15:32.126Z"}
+{"level":"info","message":"Server is running on port 3000","timestamp":"2023-06-24T19:15:32.132Z"}
