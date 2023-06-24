@@ -8,4 +8,6 @@ const movie_1 = __importDefault(require("../controllers/movie"));
 const router = (0, express_1.Router)();
 // Route to get the movies
 router.get("/list", movie_1.default.getMoviesList);
+// Route to get a movie by id
+router.get("/find/:id", movie_1.default.getMovieById);
 exports.default = router;

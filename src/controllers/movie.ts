@@ -14,8 +14,7 @@ class Controller {
      */
     public async getMoviesList(req: Request, res: Response): Promise<void> {
         try {
-            const moviesList = await Movie.find().limit(20).lean();
-            console.log("moviesList: ", moviesList[0]);
+            const moviesList = await Movie.find();
             if (moviesList.length === 0) {
                 // No movies found
                 logger.info("No movies found");
@@ -23,6 +22,30 @@ class Controller {
             } else {
                 logger.info("Found movies");
                 res.json(moviesList);
+            }
+        } catch (error) {
+            logger.error("Error", error);
+            res.status(500).json({ error: "Internal server error" });
+        }
+    }
+
+    /**
+     * Get the top movies.
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    public async getMovieById(req: Request, res: Response): Promise<void> {
+        try {
+            const id = req.params.id;
+            const movie = await Movie.find({ _id: id });
+            if (!movie) {
+                // No movies found
+                logger.info("No movie found");
+                res.status(404).json({ error: "No movie found" });
+            } else {
+                logger.info("Found movie");
+                res.json(movie);
             }
         } catch (error) {
             logger.error("Error", error);

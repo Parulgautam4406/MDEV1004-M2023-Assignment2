@@ -27,8 +27,7 @@ class Controller {
     getMoviesList(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const moviesList = yield model_1.default.find().limit(20).lean();
-                console.log("moviesList: ", moviesList[0]);
+                const moviesList = yield model_1.default.find();
                 if (moviesList.length === 0) {
                     // No movies found
                     logger_1.default.info("No movies found");
@@ -37,6 +36,33 @@ class Controller {
                 else {
                     logger_1.default.info("Found movies");
                     res.json(moviesList);
+                }
+            }
+            catch (error) {
+                logger_1.default.error("Error", error);
+                res.status(500).json({ error: "Internal server error" });
+            }
+        });
+    }
+    /**
+     * Get the top movies.
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    getMovieById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = req.params.id;
+                const movie = yield model_1.default.find({ _id: id });
+                if (!movie) {
+                    // No movies found
+                    logger_1.default.info("No movie found");
+                    res.status(404).json({ error: "No movie found" });
+                }
+                else {
+                    logger_1.default.info("Found movie");
+                    res.json(movie);
                 }
             }
             catch (error) {
