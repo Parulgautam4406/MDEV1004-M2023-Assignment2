@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import User from "../models/user";
 import logger from "../logger";
 import passport from "passport";
 
 /**
- * Controller class for user-related operations.
+ * Controller class for user-related / authentication operations.
  */
 class Controller {
     /**
@@ -43,6 +43,43 @@ class Controller {
                 });
             });
         });
+    }
+
+    /**
+     * Login User
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    processLogin(req: Request, res: Response, next: NextFunction): void {
+        passport.authenticate("local", (err: any, user: any, info: any) => {
+            // are there server errors?
+            if (err) {
+                console.error(err);
+                return next(err);
+            }
+            // are the login errors?
+            if (!user) {
+                return res.json({
+                    success: false,
+                    msg: "User Not Logged in Successfully!",
+                    user: user,
+                });
+            }
+            req.login(user, (err) => {
+                // are there DB errors?
+                if (err) {
+                    console.error(err);
+                    return next(err);
+                }
+                // return response
+                return res.json({
+                    success: true,
+                    msg: "User Logged in Successfully!",
+                    user: user,
+                });
+            });
+        })(req, res, next);
     }
 }
 

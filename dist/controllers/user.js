@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const user_1 = __importDefault(require("../models/user"));
 const passport_1 = __importDefault(require("passport"));
 /**
- * Controller class for user-related operations.
+ * Controller class for user-related / authentication operations.
  */
 class Controller {
     /**
@@ -43,6 +43,42 @@ class Controller {
                 });
             });
         });
+    }
+    /**
+     * Login User
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    processLogin(req, res, next) {
+        passport_1.default.authenticate("local", (err, user, info) => {
+            // are there server errors?
+            if (err) {
+                console.error(err);
+                return next(err);
+            }
+            // are the login errors?
+            if (!user) {
+                return res.json({
+                    success: false,
+                    msg: "User Not Logged in Successfully!",
+                    user: user,
+                });
+            }
+            req.login(user, (err) => {
+                // are there DB errors?
+                if (err) {
+                    console.error(err);
+                    return next(err);
+                }
+                // return response
+                return res.json({
+                    success: true,
+                    msg: "User Logged in Successfully!",
+                    user: user,
+                });
+            });
+        })(req, res, next);
     }
 }
 exports.default = new Controller();

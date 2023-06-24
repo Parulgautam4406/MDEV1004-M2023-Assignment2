@@ -22,4 +22,7 @@ router.delete("/delete/:id", movieController.deleteMovie);
 // Route to register user
 router.post("/register", userController.processRegisterPage);
 
+// Route to login user
+router.post("/login", userController.processLogin);
+
 export default router;

@@ -19,4 +19,6 @@ router.post("/update/:id", movie_1.default.updateMovie);
 router.delete("/delete/:id", movie_1.default.deleteMovie);
 // Route to register user
 router.post("/register", user_1.default.processRegisterPage);
+// Route to login user
+router.post("/login", user_1.default.processLogin);
 exports.default = router;
