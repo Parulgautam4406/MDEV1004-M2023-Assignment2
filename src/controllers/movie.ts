@@ -54,7 +54,7 @@ class Controller {
     }
 
     /**
-     * Add movie too Database.
+     * Add movie to Database.
      *
      * @param req The request object.
      * @param res The response object.
@@ -97,8 +97,64 @@ class Controller {
                 logger.info("Error in creating movie");
                 res.status(404).json({ error: "Error in creating movie" });
             } else {
-                logger.info("Found movie");
+                logger.info("created movie");
                 res.json(createdMovie);
+            }
+        } catch (error) {
+            logger.error("Error", error);
+            res.status(500).json({ error: "Internal server error" });
+        }
+    }
+
+    /**
+     * Update movie in Database.
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    public async updateMovie(req: Request, res: Response): Promise<void> {
+        try {
+            const id = req.body.id;
+
+            // Creating movie object
+            const movieToUpdate = new Movie({
+                _id: id,
+                Title: req.body.Title,
+                Year: req.body.Year,
+                Rated: req.body.Rated,
+                Released: req.body.Released,
+                Runtime: req.body.Runtime,
+                Genre: req.body.Genre,
+                Director: req.body.Director,
+                Writer: req.body.Writer,
+                Actors: req.body.Actors,
+                Plot: req.body.Plot,
+                Language: req.body.Language,
+                Country: req.body.Country,
+                Awards: req.body.Awards,
+                Poster: req.body.Poster,
+                Ratings: JSON.parse(req.body.Ratings),
+                Metascore: req.body.Metascore,
+                imdbRating: req.body.imdbRating,
+                imdbVotes: req.body.imdbVotes,
+                imdbID: req.body.imdbID,
+                Type: req.body.Type,
+                DVD: req.body.DVD,
+                BoxOffice: req.body.BoxOffice,
+                Production: req.body.Production,
+                Website: req.body.Website,
+                Response: req.body.Response,
+            });
+
+            // Creating in database
+            const updatedMovie = await Movie.create(movieToUpdate);
+            if (!updatedMovie) {
+                // No movie created
+                logger.info("Error in updating movie");
+                res.status(404).json({ error: "Error in updating movie" });
+            } else {
+                logger.info("movie updated");
+                res.json(updatedMovie);
             }
         } catch (error) {
             logger.error("Error", error);

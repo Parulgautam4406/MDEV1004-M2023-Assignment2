@@ -12,4 +12,7 @@ router.get("/find/:id", movieController.getMovieById);
 // Route to add movies
 router.post("/add", movieController.addMovie);
 
+// Route to update movies
+router.post("/update/:id", movieController.updateMovie);
+
 export default router;

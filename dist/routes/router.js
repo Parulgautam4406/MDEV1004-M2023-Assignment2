@@ -12,4 +12,6 @@ router.get("/list", movie_1.default.getMoviesList);
 router.get("/find/:id", movie_1.default.getMovieById);
 // Route to add movies
 router.post("/add", movie_1.default.addMovie);
+// Route to update movies
+router.post("/update/:id", movie_1.default.updateMovie);
 exports.default = router;
