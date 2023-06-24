@@ -8,6 +8,14 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const router_1 = __importDefault(require("./routes/router"));
 const configurations_1 = __importDefault(require("./configurations/configurations"));
 const logger_1 = __importDefault(require("./logger"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
+// modules for authentication
+const express_session_1 = __importDefault(require("express-session"));
+const passport_1 = __importDefault(require("passport"));
+const passport_local_1 = __importDefault(require("passport-local"));
+// authentication objects
+let strategy = passport_local_1.default.Strategy; // alias
+const user_1 = __importDefault(require("./models/user"));
 const app = (0, express_1.default)();
 const PORT = configurations_1.default.port;
 // MongoDB connection
@@ -25,6 +33,21 @@ mongoose_1.default
 // Middleware
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
+app.use((0, cookie_parser_1.default)());
+// setup express session
+app.use((0, express_session_1.default)({
+    secret: configurations_1.default.secret,
+    saveUninitialized: false,
+    resave: false,
+}));
+// initialize passport
+app.use(passport_1.default.initialize());
+app.use(passport_1.default.session());
+// implement an Auth Strategy
+passport_1.default.use(user_1.default.createStrategy());
+// serialize and deserialize user data
+passport_1.default.serializeUser(user_1.default.serializeUser());
+passport_1.default.deserializeUser(user_1.default.deserializeUser());
 // Routes
 app.use("/api/", router_1.default);
 // Error handling middleware
