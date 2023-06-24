@@ -1,5 +1,6 @@
 import { Router } from "express";
 import movieController from "../controllers/movie";
+import userController from "../controllers/user";
 
 const router = Router();
 
@@ -17,5 +18,8 @@ router.post("/update/:id", movieController.updateMovie);
 
 // Route to delete movies
 router.delete("/delete/:id", movieController.deleteMovie);
+
+// Route to register user
+router.post("/register", userController.processRegisterPage);
 
 export default router;
