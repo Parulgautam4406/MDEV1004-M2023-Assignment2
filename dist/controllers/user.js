@@ -80,5 +80,20 @@ class Controller {
             });
         })(req, res, next);
     }
+    /**
+     * Login User
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    processLogout(req, res) {
+        // Using logout function provided by passport js to logout
+        req.logout(() => {
+            // When logout is successful
+            console.log("User Logged Out");
+            // return response
+            res.json({ success: true, msg: "User Logged out Successfully!" });
+        });
+    }
 }
 exports.default = new Controller();

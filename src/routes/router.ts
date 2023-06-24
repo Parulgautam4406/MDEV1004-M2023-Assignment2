@@ -25,4 +25,7 @@ router.post("/register", userController.processRegisterPage);
 // Route to login user
 router.post("/login", userController.processLogin);
 
+// Route to logout user
+router.get("/logout", userController.processLogout);
+
 export default router;

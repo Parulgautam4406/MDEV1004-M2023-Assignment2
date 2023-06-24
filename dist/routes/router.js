@@ -21,4 +21,6 @@ router.delete("/delete/:id", movie_1.default.deleteMovie);
 router.post("/register", user_1.default.processRegisterPage);
 // Route to login user
 router.post("/login", user_1.default.processLogin);
+// Route to logout user
+router.get("/logout", user_1.default.processLogout);
 exports.default = router;
