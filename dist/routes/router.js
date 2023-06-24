@@ -10,4 +10,6 @@ const router = (0, express_1.Router)();
 router.get("/list", movie_1.default.getMoviesList);
 // Route to get a movie by id
 router.get("/find/:id", movie_1.default.getMovieById);
+// Route to add movies
+router.post("/add", movie_1.default.addMovie);
 exports.default = router;

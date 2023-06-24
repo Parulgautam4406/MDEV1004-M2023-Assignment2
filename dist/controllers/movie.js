@@ -45,7 +45,7 @@ class Controller {
         });
     }
     /**
-     * Get the top movies.
+     * Get the movie by id.
      *
      * @param req The request object.
      * @param res The response object.
@@ -63,6 +63,61 @@ class Controller {
                 else {
                     logger_1.default.info("Found movie");
                     res.json(movie);
+                }
+            }
+            catch (error) {
+                logger_1.default.error("Error", error);
+                res.status(500).json({ error: "Internal server error" });
+            }
+        });
+    }
+    /**
+     * Add movie too Database.
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    addMovie(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // Creating movie object
+                const movie = new model_1.default({
+                    Title: req.body.Title,
+                    Year: req.body.Year,
+                    Rated: req.body.Rated,
+                    Released: req.body.Released,
+                    Runtime: req.body.Runtime,
+                    Genre: req.body.Genre,
+                    Director: req.body.Director,
+                    Writer: req.body.Writer,
+                    Actors: req.body.Actors,
+                    Plot: req.body.Plot,
+                    Language: req.body.Language,
+                    Country: req.body.Country,
+                    Awards: req.body.Awards,
+                    Poster: req.body.Poster,
+                    Ratings: JSON.parse(req.body.Ratings),
+                    Metascore: req.body.Metascore,
+                    imdbRating: req.body.imdbRating,
+                    imdbVotes: req.body.imdbVotes,
+                    imdbID: req.body.imdbID,
+                    Type: req.body.Type,
+                    DVD: req.body.DVD,
+                    BoxOffice: req.body.BoxOffice,
+                    Production: req.body.Production,
+                    Website: req.body.Website,
+                    Response: req.body.Response,
+                });
+                // Creating in database
+                const createdMovie = yield model_1.default.create(movie);
+                if (!createdMovie) {
+                    // No movie created
+                    logger_1.default.info("Error in creating movie");
+                    res.status(404).json({ error: "Error in creating movie" });
+                }
+                else {
+                    logger_1.default.info("Found movie");
+                    res.json(createdMovie);
                 }
             }
             catch (error) {

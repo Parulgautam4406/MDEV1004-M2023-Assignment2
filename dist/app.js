@@ -24,6 +24,7 @@ mongoose_1.default
 });
 // Middleware
 app.use(express_1.default.json());
+app.use(express_1.default.urlencoded({ extended: false }));
 // Routes
 app.use("/api/", router_1.default);
 // Error handling middleware
