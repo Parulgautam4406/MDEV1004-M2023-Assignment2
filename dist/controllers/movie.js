@@ -183,5 +183,32 @@ class Controller {
             }
         });
     }
+    /**
+     * Delete movie from Database.
+     *
+     * @param req The request object.
+     * @param res The response object.
+     */
+    deleteMovie(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const id = req.params.id;
+                const movie = yield model_1.default.deleteOne({ _id: id });
+                if (!movie) {
+                    // No movies found
+                    logger_1.default.info("No movie found");
+                    res.status(404).json({ error: "No movie found" });
+                }
+                else {
+                    logger_1.default.info("Delted movie");
+                    res.json(movie);
+                }
+            }
+            catch (error) {
+                logger_1.default.error("Error", error);
+                res.status(500).json({ error: "Internal server error" });
+            }
+        });
+    }
 }
 exports.default = new Controller();

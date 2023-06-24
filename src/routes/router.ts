@@ -15,4 +15,7 @@ router.post("/add", movieController.addMovie);
 // Route to update movies
 router.post("/update/:id", movieController.updateMovie);
 
+// Route to delete movies
+router.delete("/delete/:id", movieController.deleteMovie);
+
 export default router;

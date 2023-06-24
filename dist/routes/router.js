@@ -14,4 +14,6 @@ router.get("/find/:id", movie_1.default.getMovieById);
 router.post("/add", movie_1.default.addMovie);
 // Route to update movies
 router.post("/update/:id", movie_1.default.updateMovie);
+// Route to delete movies
+router.delete("/delete/:id", movie_1.default.deleteMovie);
 exports.default = router;
